@@ -3,24 +3,46 @@ import { ModeToggle } from "@/components/shared/mode-toggle";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
-type Inputs = {
+import { api } from "../hook/axios";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { Spinner } from "@heroui/spinner";
+type Values = {
   email: string;
   password: string;
 };
-
 const Login = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    watch,
-  } = useForm<Inputs>({
+  } = useForm<Values>({
     defaultValues: {
       email: "",
       password: "",
     },
-    shouldFocusError: true, 
+    shouldFocusError: true,
   });
+
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+
+  const onSubmit = async (data: Values) => {
+    setLoading(true);
+    try {
+      const response = await api.post("/api/auth/sign-in", data);
+      const token = response.data.data.token;
+      if (response.status == 200) {
+        document.cookie = `token =${token}`;
+      }
+      router.push("/");
+    } catch (error: any) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="">
       <div className="absolute top-6 left-6">
@@ -34,7 +56,7 @@ const Login = () => {
           <p className="text-foreground text-sm text-center mb-6">
             Hisobingizga kirish uchun email va parolni kiriting
           </p>
-          <form onSubmit={handleSubmit((data) => console.log(data))}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <label
               htmlFor="email"
               className="block text-sm font-medium text-foreground mb-1"
@@ -53,15 +75,13 @@ const Login = () => {
               })}
             />
             <p className="text-red-500 text-sm">{errors.email?.message}</p>
-            <div className="flex items-center justify-between mb-1">
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-foreground mb-1"
-              >
-                Parol
-              </label>
-              <p className="flex items-end">{watch("password").length}</p>
-            </div>
+
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-foreground mb-1"
+            >
+              Parol
+            </label>
             <Input
               type="password"
               placeholder="Parol kiriting"
@@ -74,8 +94,9 @@ const Login = () => {
               })}
             />
             <p className="text-red-500 text-sm">{errors.password?.message}</p>
-            <Button type="submit" className="w-full mt-6">
-              <span className="text-sm font-medium">Kirish</span>
+
+            <Button type="submit" className="w-full mt-6" disabled={loading}>
+              {loading ? <Spinner /> : "Kirish"}
             </Button>
           </form>
         </div>
