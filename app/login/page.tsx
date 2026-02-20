@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { api } from "../hook/axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Spinner } from "@heroui/spinner";
+import { ClipLoader } from "react-spinners";
 type Values = {
   email: string;
   password: string;
@@ -96,7 +96,7 @@ const Login = () => {
             <p className="text-red-500 text-sm">{errors.password?.message}</p>
 
             <Button type="submit" className="w-full mt-6" disabled={loading}>
-              {loading ? <Spinner /> : "Kirish"}
+              {loading ? <ClipLoader size={25} /> : "Kirish"}
             </Button>
           </form>
         </div>

@@ -1,11 +1,8 @@
-import { ModeToggle } from "@/components/shared/mode-toggle"
-
+import React from 'react'
 
 const Home = () => {
   return (
-    <div>
-      <h2>salom</h2>
-    </div>
+    <div>Home</div>
   )
 }
 
