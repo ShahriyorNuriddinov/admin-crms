@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "header": "Revenue",
+        "type": "Income",
+        "status": "Active",
+        "target": "12000",
+        "limit": "15000",
+        "reviewer": "Admin"
+    },
+    {
+        "id": 2,
+        "header": "Expenses",
+        "type": "Outcome",
+        "status": "Active",
+        "target": "8000",
+        "limit": "10000",
+        "reviewer": "Manager"
+    },
+    {
+        "id": 3,
+        "header": "Profit",
+        "type": "Income",
+        "status": "Active",
+        "target": "4000",
+        "limit": "5000",
+        "reviewer": "Admin"
+    }
+]
