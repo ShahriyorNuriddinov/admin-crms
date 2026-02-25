@@ -196,52 +196,7 @@ const Profile = () => {
         </Card>
       </div>
 
-      {/* Stats Cards */}
-      <div className="grid gap-4 md:grid-cols-3">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">
-              Faol kunlar
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">
-              {Math.floor((Date.now() - new Date(userInfo.createdAt!).getTime()) / (1000 * 60 * 60 * 24))}
-            </div>
-            <p className="text-xs text-muted-foreground">
-              Ro'yxatdan o'tganingizdan beri
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">
-              Hisob holati
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-green-600">Faol</div>
-            <p className="text-xs text-muted-foreground">
-              Hisob to'liq faollashtirilgan
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">
-              Xavfsizlik
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-blue-600">Yaxshi</div>
-            <p className="text-xs text-muted-foreground">
-              Barcha sozlamalar yoqilgan
-            </p>
-          </CardContent>
-        </Card>
-      </div>
+  
     </div>
   );
 };
