@@ -175,7 +175,7 @@ const Profile = () => {
               <div className="space-y-2">
                 <label className="text-sm font-medium">Rol</label>
                 <Input
-                  value={userInfo?.role?.charAt(0).toUpperCase() + userInfo?.role?.slice(1)}
+                  value={userInfo?.role ? userInfo.role.charAt(0).toUpperCase() + userInfo.role.slice(1) : ''}
                   readOnly
                 />
               </div>
