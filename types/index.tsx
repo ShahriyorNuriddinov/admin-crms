@@ -132,7 +132,8 @@ export interface CourseType {
   duration: string;
   name: NameDetailsType;
   price: number;
-  is_freeze:boolean
+  is_freeze: boolean
+  students?: any[];
   updatedAt: string | Date;
   __v: number;
   _id: string;

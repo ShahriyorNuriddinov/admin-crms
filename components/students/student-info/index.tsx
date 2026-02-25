@@ -218,7 +218,7 @@ const Student_info_component = ({ id }: { id: string }) => {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-orange-600">
-              {data.leave_history.reduce((sum, leave) => sum + parseInt(leave.days), 0)}
+              {data.leave_history.reduce((sum, leave) => sum + (typeof leave.days === 'number' ? leave.days : parseInt(leave.days)), 0)}
             </div>
             <p className="text-xs text-muted-foreground mt-1">
               Jami ta'til kunlari
